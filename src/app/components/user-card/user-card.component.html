@@ -1,1 +1,11 @@
-<p>user-card works!</p>
+<div class="card shadow p-4" style="width: 18rem">
+    <img
+      [src]="usuario.image"
+      style="border-radius: 45%; width: 60%"
+      class="card-img-top m-3 align-self-center"
+      [alt]="usuario._id"
+    />
+    <div class="card-body align-self-center">
+      <h5 class="card-title">{{usuario.first_name}} {{usuario.last_name}}</h5>
+    </div>
+  </div>

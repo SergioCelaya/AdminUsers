@@ -8,6 +8,7 @@ import { ListViewComponent } from './pages/list-view/list-view.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { DetalleUserComponent } from './pages/detalle-user/detalle-user.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
