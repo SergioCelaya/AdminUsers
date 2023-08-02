@@ -1,8 +1,15 @@
 <section class="container mt-3">
-  <button class="btn btn-danger" (click)="pagina()">Pagina 2</button>
+
   <div class="row g-4 m-lg-3">
     <article class="col-12 col-md-6 col-lg-4" *ngFor="let user of arrayUsers">
       <app-user-card [usuario]="user"></app-user-card>
     </article>
   </div>
+  <nav aria-label="Paginacion">
+    <ul class="pagination justify-content-center m-5">
+      <li class="page-item"><button class="page-link" (click)="irAnterior()">Anterior</button></li>
+      <li class="page-item" *ngFor="let pagina of arrayPaginas;let i = index" ><button class="page-link" (click)="irPagina(i+1)">{{ i +1}}</button></li>
+      <li class="page-item"><button class="page-link" (click)="irSiguiente()">Siguiente</button></li>
+    </ul>
+  </nav>
 </section>

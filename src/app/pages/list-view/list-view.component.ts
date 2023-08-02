@@ -13,6 +13,7 @@ export class ListViewComponent {
   arrayUsers: User[] = [];
   usersService = inject(UsersService);
   numeroPaginas:number = 0;
+  arrayPaginas = Array(this.numeroPaginas);
   paginaActual:number = 1;
 
   async ngOnInit(): Promise<void> {
@@ -28,13 +29,28 @@ export class ListViewComponent {
 
   private cargarInfoPaginacion(respuesta:RespuestaApi):void{
     this.numeroPaginas = respuesta.total_pages;
+    this.arrayPaginas  = Array(this.numeroPaginas);
   }
 
-  async pagina():Promise<void>{
+  async irPagina(pagina:number):Promise<void>{
     try {
-      this.arrayUsers = await this.usersService.GetAll(2);
+      this.paginaActual = pagina;
+      this.arrayUsers = await this.usersService.GetAll(pagina);
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  irAnterior(){
+    if(this.paginaActual>1){
+      this.paginaActual -=1;
+      this.irPagina(this.paginaActual);
+    }
+  }
+  irSiguiente(){
+    if(this.paginaActual<this.numeroPaginas){
+      this.paginaActual+=1;
+      this.irPagina(this.paginaActual);
     }
   }
 }

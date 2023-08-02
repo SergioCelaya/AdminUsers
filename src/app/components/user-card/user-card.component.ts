@@ -8,5 +8,5 @@ import { User } from 'src/app/interfaces/user.interface';
 })
 export class UserCardComponent {
   @Input() usuario!:User ;
-
+  
 }
