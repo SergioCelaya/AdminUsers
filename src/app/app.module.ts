@@ -9,6 +9,7 @@ import { UserFormComponent } from './pages/user-form/user-form.component';
 import { DetalleUserComponent } from './pages/detalle-user/detalle-user.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxTippyModule } from 'ngx-tippy-wrapper';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxTippyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
