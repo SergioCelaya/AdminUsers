@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SwalPortalComponent } from '@sweetalert2/ngx-sweetalert2/lib/swal-portal.component';
 import { User } from 'src/app/interfaces/user.interface';
 import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalle-user',
@@ -43,11 +45,10 @@ export class DetalleUserComponent {
 
   async eliminarUser(id:string):Promise<void>{
     let response = await this.servicioUsers.EliminarUser(id);
-    alert("¿Quiere borrar el usuario indicado?")
     if(response._id == undefined){
-      alert("Se ha producido un error al borrar el usuario indicado.")
+      Swal.fire({icon: 'error',title:'Se ha producido un error al borrar el usuario indicado.'});
     }else{
-      alert("El usuario ha sido borrado correctamente.")
+      Swal.fire({icon: 'success',title:'El usuario ha sido borrado correctamente.'});
       this.volverListado();
     }
   }

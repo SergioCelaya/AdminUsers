@@ -10,6 +10,7 @@ import { DetalleUserComponent } from './pages/detalle-user/detalle-user.componen
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxTippyModule } from 'ngx-tippy-wrapper';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgxTippyModule } from 'ngx-tippy-wrapper';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxTippyModule
+    NgxTippyModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,32 +1,54 @@
 <section class="container mt-3">
   <div
     class="card"
-    style="
-      display: flex;
-      flex-direction: row;
-      padding: 10px;
-      margin-top: 100px;
-    "
+    style="display: flex; flex-direction: row; padding: 10px; margin-top: 100px"
   >
-    <div style="border-right: 1px solid #b5b5b5;flex-basis: 30%">
+    <div style="border-right: 1px solid #b5b5b5; flex-basis: 30%">
       <img
-        [src]=this.urlImagenDefecto
-        style=" border-radius: 50%; padding: 20px"
+        [src]="this.urlImagenDefecto"
+        style="border-radius: 50%; padding: 20px"
         alt="Imagen de usuario"
       />
     </div>
-    <div style="flex-basis: 70% " class="d-flex align-items-center">
-      <div class="card-body mx-auto p-4 shadow redondeoDerecha" >
-        <h3 class="card-title p-1 text-center mb-3">{{usuario.first_name}}, {{usuario.last_name}}</h3>
-        <h5 class="card-title p-1"><strong>Email: </strong>{{usuario.email}}</h5>
-        <h5 class="card-title p-1"><strong>Nombre de Usuario: </strong>{{usuario.username}}</h5>
-        <h5 class="card-title p-1"><strong>Contraseña: </strong>{{usuario.password}}</h5>
-        <h5 class="card-title p-1"><strong>URL de la imagen: </strong><p>{{usuario.image}}</p></h5>
+    <div style="flex-basis: 70%" class="d-flex align-items-center">
+      <div class="card-body mx-auto p-4 shadow redondeoDerecha">
+        <h3 class="card-title p-1 text-center mb-3">
+          {{ usuario.first_name }}, {{ usuario.last_name }}
+        </h3>
+        <h5 class="card-title p-1">
+          <strong>Email: </strong>{{ usuario.email }}
+        </h5>
+        <h5 class="card-title p-1">
+          <strong>Nombre de Usuario: </strong>{{ usuario.username }}
+        </h5>
+        <h5 class="card-title p-1">
+          <strong>Contraseña: </strong>{{ usuario.password }}
+        </h5>
+        <h5 class="card-title p-1">
+          <strong>URL de la imagen: </strong>
+          <p>{{ usuario.image }}</p>
+        </h5>
         <div class="text-center">
           <div class="btn-group mt-5">
-            <button type="button" class="btn btn-secondary" (click)="eliminarUser(usuario._id)">Eliminar</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              [swal]="{
+                icon:'question',
+                title: '¿Quiere elminar el usuario indicado?',
+                showDenyButton: true,
+                denyButtonText: 'No borrar'
+              }"
+              (confirm)="eliminarUser(usuario._id)"
+            >
+              Eliminar
+            </button>
             <button type="button" class="btn btn-secondary">Actualizar</button>
-            <button type="button" class="btn btn-secondary" (click)="volverListado()">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              (click)="volverListado()"
+            >
               Volver al listado
             </button>
           </div>

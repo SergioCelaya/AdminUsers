@@ -1,6 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
+import { UsersService } from 'src/app/services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-card',
@@ -10,6 +12,7 @@ import { User } from 'src/app/interfaces/user.interface';
 export class UserCardComponent {
   @Input() usuario!: User;
   router = inject(Router);
+  servicioUsers = inject(UsersService);
 
   detalleUser(id: string) {
     if (id != undefined) {
@@ -18,4 +21,16 @@ export class UserCardComponent {
       alert("Existe un error en el detalle del usuario" )
     }
   }
+
+  async eliminarUser(id:string){
+    let response = await this.servicioUsers.EliminarUser(id);
+    if(response._id == undefined){
+      Swal.fire({icon: 'error',title:'Se ha producido un error al borrar el usuario indicado.'});
+    }else{
+      Swal.fire({icon: 'success',title:'El usuario ha sido borrado correctamente.'});
+      this.router.navigate(['/home']);
+    }
+  }
+
+
 }
