@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: "", pathMatch: 'full', redirectTo: 'home' },
   { path: "home", component: ListViewComponent },
   { path: "newUser", component: UserFormComponent },
-  { path: "detalleUser", component: DetalleUserComponent}
+  { path: "user/:idUser", component: DetalleUserComponent}
+  //{ path: '**', component: C404Component }
 ];
 
 @NgModule({

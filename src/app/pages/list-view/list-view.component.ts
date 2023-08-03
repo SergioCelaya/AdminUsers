@@ -3,6 +3,7 @@ import { UserFormComponent } from '../user-form/user-form.component';
 import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/interfaces/user.interface';
 import { RespuestaApi } from 'src/app/interfaces/respuesta-api.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-view',
@@ -12,9 +13,10 @@ import { RespuestaApi } from 'src/app/interfaces/respuesta-api.interface';
 export class ListViewComponent {
   arrayUsers: User[] = [];
   usersService = inject(UsersService);
-  numeroPaginas:number = 0;
+  activatedRoute = inject(ActivatedRoute);
+  numeroPaginas: number = 0;
   arrayPaginas = Array(this.numeroPaginas);
-  paginaActual:number = 1;
+  paginaActual: number = 1;
 
   async ngOnInit(): Promise<void> {
     let primeraPaginacion: RespuestaApi;
@@ -27,12 +29,12 @@ export class ListViewComponent {
     }
   }
 
-  private cargarInfoPaginacion(respuesta:RespuestaApi):void{
+  private cargarInfoPaginacion(respuesta: RespuestaApi): void {
     this.numeroPaginas = respuesta.total_pages;
-    this.arrayPaginas  = Array(this.numeroPaginas);
+    this.arrayPaginas = Array(this.numeroPaginas);
   }
 
-  async irPagina(pagina:number):Promise<void>{
+  async irPagina(pagina: number): Promise<void> {
     try {
       this.paginaActual = pagina;
       this.arrayUsers = await this.usersService.GetAll(pagina);
@@ -41,15 +43,15 @@ export class ListViewComponent {
     }
   }
 
-  irAnterior(){
-    if(this.paginaActual>1){
-      this.paginaActual -=1;
+  irAnterior() {
+    if (this.paginaActual > 1) {
+      this.paginaActual -= 1;
       this.irPagina(this.paginaActual);
     }
   }
-  irSiguiente(){
-    if(this.paginaActual<this.numeroPaginas){
-      this.paginaActual+=1;
+  irSiguiente() {
+    if (this.paginaActual < this.numeroPaginas) {
+      this.paginaActual += 1;
       this.irPagina(this.paginaActual);
     }
   }

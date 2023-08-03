@@ -14,17 +14,27 @@ export class UsersService {
 
   async GetAll(pagina?: number): Promise<User[]> {
     let paginacion: string = this.baseUrl;
-    console.log(pagina)
-    if (pagina != undefined && pagina>1) {
+    if (pagina != undefined && pagina > 1) {
       paginacion += '?page=' + pagina;
     }
-    console.log(paginacion)
+    console.log(paginacion);
     return (await lastValueFrom(this.httpClient.get<RespuestaApi>(paginacion)))
       .results;
   }
 
-  async GetAllUsersInfoPaginado():Promise<RespuestaApi> {
-    return (await lastValueFrom(this.httpClient.get<RespuestaApi>(this.baseUrl)));
+  async GetAllUsersInfoPaginado(): Promise<RespuestaApi> {
+    return await lastValueFrom(this.httpClient.get<RespuestaApi>(this.baseUrl));
   }
 
+  async GetUserById(id: string): Promise<User> {
+    return await lastValueFrom(
+      this.httpClient.get<User>(this.baseUrl + '/' + id)
+    );
+  }
+
+  async EliminarUser(id: string): Promise<User> {
+    return await lastValueFrom(
+      this.httpClient.delete<User>(this.baseUrl + '/' + id)
+    );
+  }
 }
