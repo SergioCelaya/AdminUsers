@@ -5,15 +5,17 @@ import { UserFormComponent } from './pages/user-form/user-form.component';
 import { DetalleUserComponent } from './pages/detalle-user/detalle-user.component';
 
 const routes: Routes = [
-  { path: "", pathMatch: 'full', redirectTo: 'home' },
-  { path: "home", component: ListViewComponent },
-  { path: "newUser", component: UserFormComponent },
-  { path: "user/:idUser", component: DetalleUserComponent}
-  //{ path: '**', component: C404Component }
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'home', component: ListViewComponent },
+  { path: 'newUser', component: UserFormComponent },
+  { path: 'user/:idUser', component: DetalleUserComponent },
+  { path: 'updateuser/:idUser', component: UserFormComponent },
+  { path: 'newuser', component: UserFormComponent },
+  { path: '**', component: ListViewComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

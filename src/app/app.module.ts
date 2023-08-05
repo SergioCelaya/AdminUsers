@@ -11,6 +11,7 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxTippyModule } from 'ngx-tippy-wrapper';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     AppRoutingModule,
     HttpClientModule,
     NgxTippyModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

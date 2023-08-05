@@ -33,7 +33,7 @@ export class DetalleUserComponent {
       if (id != '' || id != undefined) {
         let response = await this.servicioUsers.GetUserById(id);
         if (response._id === undefined) {
-          alert('No existe un usuario con el id indicado');
+          Swal.fire({icon: 'error',title:'No existe un usuario con el id indicado'});
           this.router.navigate(['/home']);
         } else {
           this.usuario = response;
@@ -51,6 +51,10 @@ export class DetalleUserComponent {
       Swal.fire({icon: 'success',title:'El usuario ha sido borrado correctamente.'});
       this.volverListado();
     }
+  }
+
+  actualiarUser(id:string){
+    this.router.navigate(['/updateuser/'+id]);
   }
 
   volverListado(): void {

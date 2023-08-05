@@ -17,7 +17,6 @@ export class UsersService {
     if (pagina != undefined && pagina > 1) {
       paginacion += '?page=' + pagina;
     }
-    console.log(paginacion);
     return (await lastValueFrom(this.httpClient.get<RespuestaApi>(paginacion)))
       .results;
   }

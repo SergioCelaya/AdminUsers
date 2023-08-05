@@ -18,7 +18,15 @@ export class UserCardComponent {
     if (id != undefined) {
       this.router.navigate(['/user/' + id]);
     }else{
-      alert("Existe un error en el detalle del usuario" )
+      Swal.fire({icon: 'error',title:'Existe un error en el detalle del usuario'});
+    }
+  }
+
+  updateUser(id: string){
+    if (id != undefined) {
+      this.router.navigate(['/updateuser/' + id]);
+    }else{
+      Swal.fire({icon: 'error',title:'Existe un error al querer actualizar el usuario'});
     }
   }
 

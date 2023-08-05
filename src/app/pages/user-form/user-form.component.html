@@ -1,1 +1,183 @@
-<p>user-form works!</p>
+<section class="container mb-5">
+  <div
+    class="card"
+    style="display: flex; flex-direction: row; padding: 10px; margin-top: 50px"
+  >
+    <div style="border-right: 1px solid #b5b5b5; flex-basis: 30%">
+      <img
+        [src]="this.urlImagenDefecto"
+        style="border-radius: 50%; padding: 20px"
+        alt="Imagen de usuario"
+      />
+    </div>
+    <div style="flex-basis: 70%" class="d-flex align-items-center">
+      <form [formGroup]="userForm" (ngSubmit)="getDataForm()" class="p-4 col">
+        <div class="mb-2">
+          <label for="first_name">Nombre</label>
+          <input
+            type="text"
+            placeholder="Introduce tu nombre"
+            class="form-control mb-2"
+            formControlName="first_name"
+            id="first_name"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="last_name">Apellido</label>
+          <input
+            type="text"
+            placeholder="Introduce tu apellido"
+            class="form-control mb-2"
+            formControlName="last_name"
+            id="last_name"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="email">Email</label>
+          <input
+            type="text"
+            placeholder="Introduce tu email"
+            class="form-control mb-2"
+            formControlName="email"
+            id="email"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="image">Url de la imagen</label>
+          <input
+            type="text"
+            placeholder="Introduce la url de tu imagen"
+            class="form-control mb-2"
+            formControlName="image"
+            id="image"
+          />
+        </div>
+        <div class="mb-2">
+          <label for="username">User name</label>
+          <input
+            type="text"
+            placeholder="Introduce tu user name"
+            class="form-control mb-2"
+            formControlName="username"
+            id="username"
+          />
+        </div>
+        <div *ngIf="nuevoUsuario; then newUser; else existUser"></div>
+        <ng-template #newUser>
+          <div class="mb-2">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              placeholder="Introduce tu password"
+              class="form-control"
+              formControlName="password"
+              id="password"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="repeatPassword">Repite Password</label>
+            <input
+              type="password"
+              placeholder="Repite tu password"
+              class="form-control"
+              formControlName="repeatPassword"
+              id="repeatPassword"
+            />
+          </div>
+          <ul class="nav justify-content-center">
+            <li
+              class="nav-item mt-5 cursor-pointer"
+              ngxTippy
+              data-tippy-content="Guardar"
+              [tippyProps]="{
+                arrow: true,
+                placement: 'top',
+                theme: 'material',
+                animation: 'scale',
+                delay: 300
+              }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path
+                  d="M840-683v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h503l157 157Zm-60 27L656-780H180v600h600v-476ZM479.765-245Q523-245 553.5-275.265q30.5-30.264 30.5-73.5Q584-392 553.735-422.5q-30.264-30.5-73.5-30.5Q437-453 406.5-422.735q-30.5 30.264-30.5 73.5Q376-306 406.265-275.5q30.264 30.5 73.5 30.5ZM233-584h358v-143H233v143Zm-53-72v476-600 124Z"
+                />
+              </svg>
+            </li>
+          </ul>
+        </ng-template>
+        <ng-template #existUser>
+          <div class="mb-2">
+            <label for="oldPassword">Antiguo password</label>
+            <input
+              type="password"
+              placeholder="Introduce tu anterior password"
+              class="form-control"
+              formControlName="oldPassword"
+              id="oldPassword"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="reOldPassword">Repite antiguo password</label>
+            <input
+              type="password"
+              placeholder="Repite tu anterior password"
+              class="form-control"
+              formControlName="reOldPassword"
+              id="reOldPassword"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="newPassword">Nuevo password</label>
+            <input
+              type="password"
+              placeholder="Introduce tu nuevo password"
+              class="form-control"
+              formControlName="newPassword"
+              id="newPassword"
+            />
+          </div>
+          <div class="mb-2">
+            <label for="reNewPassword">Repite nuevo password</label>
+            <input
+              type="password"
+              placeholder="Repite tu nuevo password"
+              class="form-control"
+              formControlName="reNewPassword"
+              id="reNewPassword"
+            />
+          </div>
+          <ul class="nav justify-content-center">
+            <li
+              class="nav-item mt-5 cursor-pointer"
+              ngxTippy
+              data-tippy-content="Actualizar"
+              [tippyProps]="{
+                arrow: true,
+                placement: 'top',
+                theme: 'material',
+                animation: 'scale',
+                delay: 300
+              }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path
+                  d="M840-683v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42v-600q0-24 18-42t42-18h503l157 157Zm-60 27L656-780H180v600h600v-476ZM479.765-245Q523-245 553.5-275.265q30.5-30.264 30.5-73.5Q584-392 553.735-422.5q-30.264-30.5-73.5-30.5Q437-453 406.5-422.735q-30.5 30.264-30.5 73.5Q376-306 406.265-275.5q30.264 30.5 73.5 30.5ZM233-584h358v-143H233v143Zm-53-72v476-600 124Z"
+                />
+              </svg>
+            </li>
+          </ul>
+        </ng-template>
+      </form>
+    </div>
+  </div>
+</section>

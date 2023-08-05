@@ -28,30 +28,93 @@
           <strong>URL de la imagen: </strong>
           <p>{{ usuario.image }}</p>
         </h5>
-        <div class="text-center">
-          <div class="btn-group mt-5">
-            <button
-              type="button"
-              class="btn btn-secondary"
+        <div>
+          <ul class="nav justify-content-center">
+            <li
+              class="nav-item m-4 cursor-pointer"
+              ngxTippy
+              data-tippy-content="Borrar"
               [swal]="{
-                icon:'question',
-                title: '¿Quiere elminar al usuario '+usuario.first_name +','+usuario.last_name+'?',
+                icon: 'question',
+                title:
+                  '¿Quiere elminar al usuario ' +
+                  usuario.first_name +
+                  ',' +
+                  usuario.last_name +
+                  '?',
                 showDenyButton: true,
-                denyButtonText: 'No borrar'
+                denyButtonText: 'Cancelar'
               }"
               (confirm)="eliminarUser(usuario._id)"
+              [tippyProps]="{
+                arrow: true,
+                placement: 'top',
+                theme: 'material',
+                animation: 'scale',
+                delay: 300
+              }"
             >
-              Eliminar
-            </button>
-            <button type="button" class="btn btn-secondary">Actualizar</button>
-            <button
-              type="button"
-              class="btn btn-secondary"
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="41"
+                viewBox="0 -960 960 960"
+                width="41"
+              >
+                <path
+                  d="M261-120q-24.75 0-42.375-17.625T201-180v-570h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438v-570ZM367-266h60v-399h-60v399Zm166 0h60v-399h-60v399ZM261-750v570-570Z"
+                />
+              </svg>
+            </li>
+            <li
+              class="nav-item m-4 cursor-pointer"
+              ngxTippy
+              data-tippy-content="Actualizar"
+              (click)="actualiarUser(usuario._id)"
+              [tippyProps]="{
+                arrow: true,
+                placement: 'top',
+                theme: 'material',
+                animation: 'scale',
+                delay: 300
+              }"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="43"
+                viewBox="0 0 24 24"
+                width="43"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"
+                />
+              </svg>
+            </li>
+            <li
+              class="nav-item m-4 cursor-pointer"
+              ngxTippy
+              data-tippy-content="Volver a listado"
               (click)="volverListado()"
+              [tippyProps]="{
+                arrow: true,
+                placement: 'top',
+                theme: 'material',
+                animation: 'scale',
+                delay: 300
+              }"
             >
-              Volver al listado
-            </button>
-          </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="48"
+                viewBox="0 -960 960 960"
+                width="48"
+              >
+                <path
+                  d="M640-403q-51 0-84.5-33.5T522-521q0-51 33.5-84.5T640-639q51 0 84.5 33.5T758-521q0 51-33.5 84.5T640-403ZM400-160v-66q0-18.864 9-35.932T433-286q45-32 98.5-47.5T640-349q55 0 108 17t99 46q14 10 23.5 25.5T880-226v66H400Zm55-71v11h370v-11q-39-26-90-42t-95-16q-44 0-95.5 16T455-231Zm185-232q26 0 42-16t16-42q0-26-16-42t-42-16q-26 0-42 16t-16 42q0 26 16 42t42 16Zm0-58Zm0 301ZM120-410v-60h306v60H120Zm0-330v-60h473v60H120Zm349 165H120v-60h380q-11 13-18.727 27.921Q473.545-592.159 469-575Z"
+                />
+              </svg>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

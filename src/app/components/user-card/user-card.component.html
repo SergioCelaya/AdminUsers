@@ -14,6 +14,7 @@
         class="nav-item m-3 cursor-pointer"
         ngxTippy
         data-tippy-content="Actualizar"
+        (click)="updateUser(usuario._id)"
         [tippyProps]="{
           arrow: true,
           placement: 'top',
@@ -66,7 +67,7 @@
           icon: 'question',
           title: '¿Quiere elminar al usuario '+usuario.first_name +','+usuario.last_name+'?',
           showDenyButton: true,
-          denyButtonText: 'No borrar'
+          denyButtonText: 'Cancelar'
         }"
         (confirm)="eliminarUser(usuario._id)"
         [tippyProps]="{
