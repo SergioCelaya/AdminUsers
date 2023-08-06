@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxTippyModule } from 'ngx-tippy-wrapper';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ErrorComponent } from './pages/error/error.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListViewComponent,
     UserFormComponent,
     DetalleUserComponent,
-    UserCardComponent
+    UserCardComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

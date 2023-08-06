@@ -15,7 +15,7 @@ export class DetalleUserComponent {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   urlImagenDefecto: string = '../../../assets/usuario.png';
- 
+
   usuario: User = {
     _id: '',
     email: '',
@@ -28,33 +28,56 @@ export class DetalleUserComponent {
   };
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(async (params: any) => {
-      let id: string = params.idUser;
-      if (id != '' || id != undefined) {
-        let response = await this.servicioUsers.GetUserById(id);
-        if (response._id === undefined) {
-          Swal.fire({icon: 'error',title:'No existe un usuario con el id indicado'});
-          this.router.navigate(['/home']);
-        } else {
-          this.usuario = response;
-          this.urlImagenDefecto = response.image;
+    try {
+      this.activatedRoute.params.subscribe(async (params: any) => {
+        let id: string = params.idUser;
+        if (id != '' || id != undefined) {
+          let response = await this.servicioUsers.GetUserById(id);
+          if (response._id === undefined) {
+            Swal.fire({
+              icon: 'error',
+              title: 'No existe un usuario con el id indicado',
+            });
+            this.router.navigate(['/home']);
+          } else {
+            this.usuario = response;
+            this.urlImagenDefecto = response.image;
+          }
         }
-      }
-    });
-  }
-
-  async eliminarUser(id:string):Promise<void>{
-    let response = await this.servicioUsers.EliminarUser(id);
-    if(response._id == undefined){
-      Swal.fire({icon: 'error',title:'Se ha producido un error al borrar el usuario indicado.'});
-    }else{
-      Swal.fire({icon: 'success',title:'El usuario ha sido borrado correctamente.'});
-      this.volverListado();
+      });
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al obtener el usuario. Consulte con el administrador.',
+      });
     }
   }
 
-  actualiarUser(id:string){
-    this.router.navigate(['/updateuser/'+id]);
+  async eliminarUser(id: string): Promise<void> {
+    try {
+      let response = await this.servicioUsers.DeleteUser(id);
+      if (response._id == undefined) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Se ha producido un error al borrar el usuario indicado.',
+        });
+      } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'El usuario ha sido borrado correctamente.',
+        });
+        this.volverListado();
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al borrar al usuario. Consulte con el administrador.',
+      });
+    }
+  }
+
+  actualizarUser(id: string) {
+    this.router.navigate(['/updateuser/' + id]);
   }
 
   volverListado(): void {

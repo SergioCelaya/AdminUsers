@@ -31,9 +31,20 @@ export class UsersService {
     );
   }
 
-  async EliminarUser(id: string): Promise<User> {
+  async DeleteUser(id: string): Promise<User> {
     return await lastValueFrom(
       this.httpClient.delete<User>(this.baseUrl + '/' + id)
+    );
+  }
+  async NewUser(user:User):Promise<User>{
+    return await lastValueFrom(
+      this.httpClient.post<User>(this.baseUrl, user)
+    );
+  }
+
+  async UpdateUser(user:User):Promise<User>{
+    return await lastValueFrom(
+      this.httpClient.put<User>(this.baseUrl+ '/' + user._id, user)
     );
   }
 }

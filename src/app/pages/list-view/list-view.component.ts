@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/interfaces/user.interface';
 import { RespuestaApi } from 'src/app/interfaces/respuesta-api.interface';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-view',
@@ -24,9 +25,11 @@ export class ListViewComponent {
       primeraPaginacion = await this.usersService.GetAllUsersInfoPaginado();
       this.cargarInfoPaginacion(primeraPaginacion);
       this.arrayUsers = primeraPaginacion.results;
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {Swal.fire({
+      icon: 'error',
+      title:
+        'Error al obteener los usuarios. Consulte con el administrador.',
+    });}
   }
 
   private cargarInfoPaginacion(respuesta: RespuestaApi): void {
@@ -39,7 +42,11 @@ export class ListViewComponent {
       this.paginaActual = pagina;
       this.arrayUsers = await this.usersService.GetAll(pagina);
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: 'error',
+        title:
+          'Error al obtener los usuarios. Consulte con el administrador.',
+      });
     }
   }
 

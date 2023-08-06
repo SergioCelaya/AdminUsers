@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListViewComponent } from './pages/list-view/list-view.component';
 import { UserFormComponent } from './pages/user-form/user-form.component';
 import { DetalleUserComponent } from './pages/detalle-user/detalle-user.component';
+import { ErrorComponent } from './pages/error/error.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -11,7 +12,7 @@ const routes: Routes = [
   { path: 'user/:idUser', component: DetalleUserComponent },
   { path: 'updateuser/:idUser', component: UserFormComponent },
   { path: 'newuser', component: UserFormComponent },
-  { path: '**', component: ListViewComponent }
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({
