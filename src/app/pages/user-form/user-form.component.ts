@@ -15,6 +15,7 @@ export class UserFormComponent {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   nuevoUsuario: boolean = true;
+  textoFormularo:string = "Nuevo usuario"
 
   constructor() {
     this.userForm = new FormGroup(
@@ -24,14 +25,7 @@ export class UserFormComponent {
         first_name: new FormControl('', []),
         last_name: new FormControl('', []),
         email: new FormControl('', []),
-        image: new FormControl('', []),
-        username: new FormControl('', []),
-        password: new FormControl('', []),
-        repeatPassword: new FormControl('', []),
-        oldPassword: new FormControl('', []),
-        reOldPassword: new FormControl('',[]),
-        newPassword: new FormControl('', []),
-        reNewPassword: new FormControl('', []),
+        image: new FormControl('', [])
       },
       []
     );
@@ -41,6 +35,7 @@ ngOnInit(){
   this.activatedRoute.params.subscribe(async (params: any) => {
     let id: string = params.idUser;
     if (id!= undefined) {
+      this.textoFormularo = "Actualizar usuario";
       let response = await this.postsService.GetUserById(id)
       if(response._id === undefined){
         this.router.navigate(['/newuser']);
@@ -54,14 +49,7 @@ ngOnInit(){
           first_name: new FormControl(response.first_name, []),
           last_name: new FormControl(response.last_name, []),
           email: new FormControl(response.email, []),
-          image: new FormControl(response.image, []),
-          username: new FormControl(response.username, []),
-          password: new FormControl('', []),
-          repeatPassword: new FormControl('', []),
-          oldPassword: new FormControl(response.password, []),
-          reOldPassword: new FormControl('',[]),
-          newPassword: new FormControl('', []),
-          reNewPassword: new FormControl('', []),
+          image: new FormControl(response.image, [])
         },
         []
       );
