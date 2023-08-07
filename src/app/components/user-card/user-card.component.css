@@ -1,4 +1,7 @@
 .cursor-pointer { cursor: pointer; }
+.cardSize{
+    width: 18rem;
+}
 .imageCard{
     border-radius: 45%; 
     width: 70%
