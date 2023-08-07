@@ -1,6 +1,6 @@
 <section class="container mb-5">
   <div class="card formulario">
-    <div class="containerImg">
+    <div class="imgContainer">
       <img
         [src]="this.urlImagenDefecto"
         class="cardImg"
@@ -13,7 +13,7 @@
       </div>
       <form [formGroup]="userForm" (ngSubmit)="getDataForm()" class="p-4 col">
         <div class="mb-2">
-          <label for="first_name" class="form-label mb-2">Nombre</label>
+          <label for="first_name" class="form-label mb-2 fs-4">Nombre</label>
           <input
             type="text"
             placeholder="Introduce tu nombre"
@@ -21,18 +21,18 @@
             formControlName="first_name"
             id="first_name"
           />
-          <p class="text-danger" *ngIf="checkControl('first_name', 'required')">
+          <p class="text-danger fw-bold" *ngIf="checkControl('first_name', 'required')">
             Campo es requerido
           </p>
           <p
-            class="text-danger"
+            class="text-danger fw-bold"
             *ngIf="checkControl('first_name', 'minlength')"
           >
             La longitud minima es de 3 caracteres
           </p>
         </div>
         <div class="mb-2">
-          <label for="last_name" class="mb-2">Apellido</label>
+          <label for="last_name" class="mb-2 fs-4">Apellido</label>
           <input
             type="text"
             placeholder="Introduce tu apellido"
@@ -40,12 +40,12 @@
             formControlName="last_name"
             id="last_name"
           />
-          <p class="text-danger" *ngIf="checkControl('last_name', 'required')">
+          <p class="text-danger fw-bold" *ngIf="checkControl('last_name', 'required')">
             Campo es requerido
           </p>
         </div>
         <div class="mb-2">
-          <label for="email" class="mb-2">Email</label>
+          <label for="email" class="mb-2 fs-4">Email</label>
           <input
             type="text"
             placeholder="Introduce tu email"
@@ -53,15 +53,15 @@
             formControlName="email"
             id="email"
           />
-          <p class="text-danger" *ngIf="checkControl('email', 'required')">
+          <p class="text-danger fw-bold" *ngIf="checkControl('email', 'required')">
             Campo es requerido
           </p>
-          <p class="text-danger" *ngIf="checkControl('email', 'pattern')">
+          <p class="text-danger fw-bold" *ngIf="checkControl('email', 'pattern')">
             El email tiene formato incorrecto
           </p>
         </div>
         <div class="mb-2">
-          <label for="image" class="mb-2">Url de la imagen</label>
+          <label for="image" class="mb-2 fs-4">Url de la imagen</label>
           <input
             type="text"
             placeholder="Introduce la url de tu imagen"
@@ -70,7 +70,7 @@
             id="image"
             (blur)="CambiarUrlImagen()"
           />
-          <p class="text-danger" *ngIf="checkControl('image', 'pattern')">
+          <p class="text-danger fw-bold" *ngIf="checkControl('image', 'pattern')">
             La url de la imagen tiene formato incorrecto
           </p>
         </div>

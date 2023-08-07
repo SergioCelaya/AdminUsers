@@ -1,23 +1,38 @@
-.cursor-pointer { cursor: pointer; }
-.formulario{
-    display: flex; flex-direction: row; padding: 10px; margin-top: 50px
+.cursor-pointer {
+  cursor: pointer;
 }
-.containerImg{
-    border-right: 1px solid #b5b5b5; flex-basis: 30%
+.formulario {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  margin-top: 50px;
+  background-image: linear-gradient(#fde7ee, #fde7ee,#fde7ee, #fde7ee,#fde7ee, #fde7ee, #8f3855);
 }
-.cardImg{
-    border-radius: 50%; padding: 20px
+
+.cardImg {
+  border-radius: 50%;
+  padding: 20px;
 }
-.containerInfo{
-    flex-basis: 70%
+.containerInfo {
+  flex-basis: 70%;
+}
+.imgContainer {
+  text-align: center;
 }
 @media (max-width: 992px) {
-    .formulario{
-        flex-direction: column;
-    }
-    .containerImg{
-        border-right: 0px;
-        border-bottom: 1px solid #b5b5b5;
-        text-align: center;
-    }
+  .formulario {
+    flex-direction: column;
+  }
+  .containerImg {
+    border-right: 0px;
+    border-bottom: 1px solid #000000;
+    text-align: center;
+  }
+}
+@media (max-width: 768px) {
+  .cardImg {
+    border-radius: 50%;
+    padding: 20px;
+    width: 75%;
+  }
 }

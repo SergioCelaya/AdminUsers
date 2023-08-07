@@ -1,16 +1,16 @@
-<div class="card shadow p-4 cardSize">
+<div class="card shadow p-3 cardSize cardImg">
   <img
     [src]="usuario.image"
     class="card-img-top m-3 align-self-center imageCard"
     [alt]="usuario._id"
   />
-  <div class="card-body align-self-center">
-    <h6 class="card-title">{{ usuario.first_name }} {{ usuario.last_name }}</h6>
+  <div class="card-body align-self-center mt-4">
+    <h6 class="card-title fs-5">{{ usuario.first_name }} {{ usuario.last_name }}</h6>
   </div>
   <div>
     <ul class="nav justify-content-center">
       <li
-        class="nav-item m-3 cursor-pointer"
+        class="nav-item m-2 cursor-pointer"
         ngxTippy
         data-tippy-content="Actualizar"
         (click)="updateUser(usuario._id)"
@@ -35,7 +35,7 @@
         </svg>
       </li>
       <li
-        class="nav-item m-3 cursor-pointer"
+        class="nav-item m-2 cursor-pointer"
         ngxTippy
         data-tippy-content="Detalles"
         (click)="detalleUser(usuario._id)"
@@ -59,7 +59,7 @@
         </svg>
       </li>
       <li
-        class="nav-item m-3 cursor-pointer"
+        class="nav-item m-2 cursor-pointer"
         ngxTippy
         data-tippy-content="Borrar"
         [swal]="{

@@ -1,4 +1,8 @@
 .cursor-pointer { cursor: pointer; }
+.cardImg{
+    background-image: url("../../../assets/bkdCard2.png");
+    background-size: cover;
+}
 .cardSize{
     width: 18rem;
 }

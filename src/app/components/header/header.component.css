@@ -1,1 +1,6 @@
-.active{background-color: rgb(168, 18, 66);}
+.active {
+  font-weight: 600;
+}
+.backgroundColor {
+  background-image: linear-gradient(#dc7787, #8f3855);
+}
