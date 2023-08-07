@@ -1,16 +1,13 @@
 <section class="container mb-5">
-  <div
-    class="card"
-    style="display: flex; flex-direction: row; padding: 10px; margin-top: 50px"
-  >
-    <div style="border-right: 1px solid #b5b5b5; flex-basis: 30%">
+  <div class="card formulario">
+    <div class="containerImg">
       <img
         [src]="this.urlImagenDefecto"
-        style="border-radius: 50%; padding: 20px"
+        class="cardImg"
         alt="Imagen de usuario"
       />
     </div>
-    <div style="flex-basis: 70%" class="d-flex flex-column">
+    <div class="d-flex containerInfo flex-column">
       <div class="m-lg-4">
         <h2>{{ textoFormularo }}</h2>
       </div>
@@ -27,7 +24,10 @@
           <p class="text-danger" *ngIf="checkControl('first_name', 'required')">
             Campo es requerido
           </p>
-          <p class="text-danger" *ngIf="checkControl('first_name', 'minlength')">
+          <p
+            class="text-danger"
+            *ngIf="checkControl('first_name', 'minlength')"
+          >
             La longitud minima es de 3 caracteres
           </p>
         </div>
@@ -56,7 +56,9 @@
           <p class="text-danger" *ngIf="checkControl('email', 'required')">
             Campo es requerido
           </p>
-          <p class="text-danger" *ngIf="checkControl('email', 'pattern')">El email tiene formato incorrecto</p>
+          <p class="text-danger" *ngIf="checkControl('email', 'pattern')">
+            El email tiene formato incorrecto
+          </p>
         </div>
         <div class="mb-2">
           <label for="image" class="mb-2">Url de la imagen</label>
@@ -66,12 +68,21 @@
             class="form-control mb-2"
             formControlName="image"
             id="image"
-            (blur)="ProbarUrlImagen()"
+            (blur)="CambiarUrlImagen()"
           />
-          <p class="text-danger"  *ngIf="checkControl('image', 'pattern')">La url de la imagen tiene formato incorrecto</p>
+          <p class="text-danger" *ngIf="checkControl('image', 'pattern')">
+            La url de la imagen tiene formato incorrecto
+          </p>
         </div>
-        
-        <button type="submit" value="Enviar" class="btn btn-danger mt-4"  [disabled]="!userForm.valid">{{textoBoton}}</button>
+
+        <button
+          type="submit"
+          value="Enviar"
+          class="btn btn-danger mt-4"
+          [disabled]="!userForm.valid"
+        >
+          {{ textoBoton }}
+        </button>
       </form>
     </div>
   </div>

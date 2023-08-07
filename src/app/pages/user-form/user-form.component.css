@@ -1,1 +1,23 @@
 .cursor-pointer { cursor: pointer; }
+.formulario{
+    display: flex; flex-direction: row; padding: 10px; margin-top: 50px
+}
+.containerImg{
+    border-right: 1px solid #b5b5b5; flex-basis: 30%
+}
+.cardImg{
+    border-radius: 50%; padding: 20px
+}
+.containerInfo{
+    flex-basis: 70%
+}
+@media (max-width: 992px) {
+    .formulario{
+        flex-direction: column;
+    }
+    .containerImg{
+        border-right: 0px;
+        border-bottom: 1px solid #b5b5b5;
+        text-align: center;
+    }
+}

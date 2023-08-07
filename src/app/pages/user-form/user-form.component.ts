@@ -42,10 +42,10 @@ export class UserFormComponent {
         last_name: new FormControl('', [Validators.required]),
         email: new FormControl('', [
           Validators.required,
-          Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/)
+          Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/),
         ]),
         image: new FormControl('', [
-          Validators.pattern(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/)
+          Validators.pattern(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/),
         ]),
       },
       []
@@ -70,12 +70,20 @@ export class UserFormComponent {
             {
               id: new FormControl(response.id, []),
               _id: new FormControl(response._id, []),
-              first_name: new FormControl(response.first_name, [ Validators.required,
-                Validators.minLength(3),]),
-              last_name: new FormControl(response.last_name, [Validators.required]),
-              email: new FormControl(response.email, [Validators.required,
-                Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,8}$/)]),
-              image: new FormControl(response.image, [Validators.pattern(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/)]),
+              first_name: new FormControl(response.first_name, [
+                Validators.required,
+                Validators.minLength(3),
+              ]),
+              last_name: new FormControl(response.last_name, [
+                Validators.required,
+              ]),
+              email: new FormControl(response.email, [
+                Validators.required,
+                Validators.pattern(/^[\w-.]+@([\w-]+\.)+[\w-]{2,6}$/),
+              ]),
+              image: new FormControl(response.image, [
+                Validators.pattern(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/),
+              ]),
             },
             []
           );
@@ -83,8 +91,7 @@ export class UserFormComponent {
         } catch (error) {
           Swal.fire({
             icon: 'error',
-            title:
-              'Error en el acceso usuario. Consulte con el administrador.',
+            title: 'Error en el acceso usuario. Consulte con el administrador.',
           });
           this.router.navigate(['/home']);
         }
@@ -118,8 +125,11 @@ export class UserFormComponent {
     );
   }
 
-  ProbarUrlImagen() {
-    this.urlImagenDefecto = this.userForm.value.image;
+  CambiarUrlImagen() {
+    let url = this.userForm.value.image;
+    if (url != undefined && url != '') {
+      this.urlImagenDefecto = this.userForm.value.image;
+    }
   }
 
   async getDataForm() {
