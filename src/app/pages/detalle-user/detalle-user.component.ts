@@ -14,7 +14,7 @@ export class DetalleUserComponent {
   servicioUsers = inject(UsersService);
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
-  urlImagenDefecto: string = '../../../assets/usuario.png';
+  urlImagenUsuario: string = '../../../assets/usuario.png';
 
   usuario: User = {
     _id: '',
@@ -41,7 +41,7 @@ export class DetalleUserComponent {
             this.router.navigate(['/home']);
           } else {
             this.usuario = response;
-            this.urlImagenDefecto = response.image;
+            this.urlImagenUsuario = response.image;
           }
         }
       });

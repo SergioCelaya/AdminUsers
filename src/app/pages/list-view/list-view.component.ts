@@ -51,14 +51,12 @@ export class ListViewComponent {
   }
 
   irAnterior() {
-    console.log(this.paginaActual)
     if (this.paginaActual > 1) {
       this.paginaActual -= 1;
       this.irPagina(this.paginaActual);
     }
   }
   irSiguiente() {
-    console.log(this.paginaActual)
     if (this.paginaActual < this.numeroPaginas) {
       this.paginaActual += 1;
       this.irPagina(this.paginaActual);

@@ -65,7 +65,6 @@ export class UserFormComponent {
           }
           this.nuevoUsuario = false;
           this.usuarioExistente = response;
-          ///lleno de nuevo el formulario
           this.userForm = new FormGroup(
             {
               id: new FormControl(response.id, []),
@@ -148,7 +147,6 @@ export class UserFormComponent {
       };
       try {
         let response = await this.userService.NewUser(usuario);
-        console.log(response);
         this.userForm.reset();
         if (response.id) {
           Swal.fire({
@@ -183,8 +181,6 @@ export class UserFormComponent {
       };
       try {
         let response = await this.userService.UpdateUser(usuario);
-
-        console.log(response);
         if (response.id) {
           Swal.fire({
             icon: 'success',
