@@ -8,10 +8,9 @@ import { ErrorComponent } from './pages/error/error.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: ListViewComponent },
-  { path: 'newUser', component: UserFormComponent },
+  { path: 'newuser', component: UserFormComponent },
   { path: 'user/:idUser', component: DetalleUserComponent },
   { path: 'updateuser/:idUser', component: UserFormComponent },
-  { path: 'newuser', component: UserFormComponent },
   { path: '**', component: ErrorComponent}
 ];
 
